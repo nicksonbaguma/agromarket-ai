@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --green-primary: #2D7D32;
+  --green-light: #4CAF50;
+  --green-dark: #1B5E20;
+  --orange-action: #F57C00;
+  --amber-warning: #F9A825;
+  --blue-data: #1565C0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FAFAF7;
+  color: #1A1A1A;
+}
+
+.agent-bubble {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.price-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
