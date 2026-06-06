@@ -1,7 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Send, Mic, Leaf, TrendingUp, Users, DollarSign, Truck, ArrowLeft, Bot, User } from "lucide-react";
+import { Send, Leaf, TrendingUp, Users, DollarSign, Truck, ArrowLeft, Bot, User } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+const API_URL = "https://bagumanickson-agromarket-ai-backend.hf.space";
 
 const AGENTS = [
   { id: "auto", label: "Smart Route", icon: Bot, color: "bg-gray-100 text-gray-700" },
@@ -61,7 +63,7 @@ export default function ChatPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/chat", {
+      const response = await fetch(`${API_URL}/api/v1/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: messageText, agent: selectedAgent }),
@@ -165,7 +167,7 @@ export default function ChatPage() {
                     ? "bg-green-700 text-white rounded-tr-sm"
                     : "bg-white text-gray-800 border border-gray-100 shadow-sm rounded-tl-sm"
                 }`}>
-                  {msg.content}
+                  <div className="prose prose-sm max-w-none prose-headings:text-gray-800 prose-strong:text-gray-800 prose-ul:my-1 prose-li:my-0"><ReactMarkdown>{msg.content}</ReactMarkdown></div>
                 </div>
               </div>
             </div>
